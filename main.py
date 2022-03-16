@@ -1,16 +1,13 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+chrome_driver_path = r'C:\Users\pluus\dev_stuff\chromedriver.exe'
+driver = webdriver.Chrome(executable_path=chrome_driver_path)
+driver.get('http://orteil.dashnet.org/experiments/cookie/')
+while True:
+    big_cookie = driver.find_element(By.ID, 'cookie')
+    big_cookie.click()
+    cookies = driver.find_element(By.ID, 'money')
+    print(cookies.text)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
