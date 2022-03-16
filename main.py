@@ -8,13 +8,14 @@ driver.get('http://orteil.dashnet.org/experiments/cookie/')
 timecheck = int(time.time())
 big_cookie = driver.find_element(By.ID, 'cookie')
 ids = driver.find_elements(By.CSS_SELECTOR, '#store div')
-ids = [id.get_attribute('id') for id in ids]
+ids = [id.get_attribute('id') for id in ids][::-1]
 
 while True:
     big_cookie.click()
     if (int(time.time()) - timecheck) % 5 == 0:
         for id in ids:
             element = driver.find_element(By.ID, id)
-            if element.get_attribute('class') =! 'grayed':
-                pass
+            print(element.text)
+            if element.get_attribute('class') != 'grayed':
+                element.click()
 
